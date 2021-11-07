@@ -25,8 +25,8 @@ public class UMUGuns {
 		IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 		IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-		ModItems.initializeCommon(forgeBus, modBus);
-		ModEntities.initializeCommon(forgeBus, modBus);
+		ModItems.initialize(forgeBus, modBus);
+		ModEntities.initialize(forgeBus, modBus);
 
 		DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> new ClientHandler(forgeBus, modBus)::initialize);
 	}

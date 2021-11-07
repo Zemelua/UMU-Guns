@@ -20,7 +20,7 @@ public final class ModItems {
 
 	private ModItems() {}
 
-	public static void initializeCommon(IEventBus forgeBus, IEventBus modBus) {
+	public static void initialize(IEventBus forgeBus, IEventBus modBus) {
 		REGISTRY.register(modBus);
 	}
 }

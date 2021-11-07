@@ -1,6 +1,10 @@
 package io.github.zemelua.umu_guns.client;
 
+import io.github.zemelua.umu_guns.client.model.ModModelLayers;
+import io.github.zemelua.umu_guns.client.model.entity.BulletModel;
+import io.github.zemelua.umu_guns.client.renderer.entity.BulletRenderer;
 import io.github.zemelua.umu_guns.entity.ModEntities;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 
 public class ClientHandler {
@@ -19,8 +23,17 @@ public class ClientHandler {
 	public void initialize() {
 		if (initialized) throw new IllegalStateException("Client is already initialized!");
 
-		ModEntities.initializeClient(forgeBus, modBus);
+		modBus.addListener(ClientHandler::onRegisterLayerDefinitions);
+		modBus.addListener(ClientHandler::onRegisterEntityRenderers);
 
 		this.initialized = true;
+	}
+
+	private static void onRegisterLayerDefinitions(final EntityRenderersEvent.RegisterLayerDefinitions event) {
+		event.registerLayerDefinition(ModModelLayers.BULLET, BulletModel::createLayer);
+	}
+
+	private static void onRegisterEntityRenderers(final EntityRenderersEvent.RegisterRenderers event) {
+		event.registerEntityRenderer(ModEntities.BULLET.get(), BulletRenderer::new);
 	}
 }
