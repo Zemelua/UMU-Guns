@@ -1,6 +1,7 @@
 package io.github.zemelua.umu_guns;
 
 import io.github.zemelua.umu_guns.client.ClientHandler;
+import io.github.zemelua.umu_guns.effect.ModEffects;
 import io.github.zemelua.umu_guns.entity.ModEntities;
 import io.github.zemelua.umu_guns.item.ModItems;
 import net.minecraft.resources.ResourceLocation;
@@ -27,6 +28,7 @@ public class UMUGuns {
 
 		ModItems.initialize(forgeBus, modBus);
 		ModEntities.initialize(forgeBus, modBus);
+		ModEffects.initialize(forgeBus, modBus);
 
 		DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> new ClientHandler(forgeBus, modBus)::initialize);
 	}

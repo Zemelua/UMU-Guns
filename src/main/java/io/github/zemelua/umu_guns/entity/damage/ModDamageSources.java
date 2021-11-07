@@ -11,4 +11,8 @@ public final class ModDamageSources {
 	public static DamageSource bullet(BulletEntity bullet, @Nullable Entity owner) {
 		return new IndirectEntityDamageSource("bullet", bullet, owner).setProjectile();
 	}
+
+	public static DamageSource bleed() {
+		return new DamageSource("bleed").bypassArmor().bypassMagic();
+	}
 }

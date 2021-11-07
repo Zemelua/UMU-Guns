@@ -20,7 +20,5 @@ public final class ModEntities {
 
 	public static void initialize(IEventBus forgeBus, IEventBus modBus) {
 		REGISTRY.register(modBus);
-
-		forgeBus.addListener(BulletEntity::onLivingAttack);
 	}
 }

@@ -69,7 +69,7 @@ public class HeavyMachineGunItem extends ProjectileWeaponItem {
 				if (projectile.getItem() instanceof IBulletItem bullet) {
 					BulletEntity bulletEntity = bullet.createBullet(world, player);
 
-					Vec3 towardsVec = player.getLookAngle();
+					Vec3 towardsVec = player.getLookAngle().scale(2.0D);
 					bulletEntity.shoot(towardsVec.x(), towardsVec.y(), towardsVec.z(), 1.0F, recoil);
 
 					world.addFreshEntity(bulletEntity);
