@@ -1,6 +1,8 @@
 package io.github.zemelua.umu_guns;
 
 import io.github.zemelua.umu_guns.client.ClientHandler;
+import io.github.zemelua.umu_guns.client.particle.ModParticles;
+import io.github.zemelua.umu_guns.client.sound.ModSounds;
 import io.github.zemelua.umu_guns.effect.ModEffects;
 import io.github.zemelua.umu_guns.entity.ModEntities;
 import io.github.zemelua.umu_guns.item.ModItems;
@@ -29,6 +31,8 @@ public class UMUGuns {
 		ModItems.initialize(forgeBus, modBus);
 		ModEntities.initialize(forgeBus, modBus);
 		ModEffects.initialize(forgeBus, modBus);
+		ModParticles.initialize(forgeBus, modBus);
+		ModSounds.initialize(forgeBus, modBus);
 
 		DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> new ClientHandler(forgeBus, modBus)::initialize);
 	}

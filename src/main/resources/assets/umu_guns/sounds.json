@@ -1,3 +1,10 @@
 {
-
+	"heavy_machine_gun_shoot": {
+		"subtitle": "subtitles.item.heavy_machine_gun.shoot",
+		"sounds": [
+			"umu_guns:heavy_machine_gun_shoot_0",
+			"umu_guns:heavy_machine_gun_shoot_1",
+			"umu_guns:heavy_machine_gun_shoot_2"
+		]
+	}
 }

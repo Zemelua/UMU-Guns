@@ -1,7 +1,7 @@
 package io.github.zemelua.umu_guns.item;
 
+import io.github.zemelua.umu_guns.client.sound.ModSounds;
 import io.github.zemelua.umu_guns.entity.BulletEntity;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -59,7 +59,7 @@ public class HeavyMachineGunItem extends ProjectileWeaponItem {
 			if (canFire || (passedTicks >= bootingTicks + MAX_FIRE_INTERVAL && passedTicks % MAX_FIRE_INTERVAL == 0)) {
 				if (!canFire) recoil = Math.min((passedTicks - bootingTicks) / 2.0F, 8.0F);
 
-				player.level.playSound(null, player.blockPosition(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F);
+				player.level.playSound(null, player.blockPosition(), ModSounds.HEAVY_MACHINE_GUN_SHOOT.get(), SoundSource.PLAYERS, 0.23F, 0.3F);
 
 				ItemStack projectile = player.getProjectile(itemStack);
 				if (player.getAbilities().instabuild && projectile.is(Items.ARROW)) {
@@ -69,7 +69,7 @@ public class HeavyMachineGunItem extends ProjectileWeaponItem {
 				if (projectile.getItem() instanceof IBulletItem bullet) {
 					BulletEntity bulletEntity = bullet.createBullet(world, player);
 
-					Vec3 towardsVec = player.getLookAngle().scale(2.0D);
+					Vec3 towardsVec = player.getLookAngle().scale(4.0D);
 					bulletEntity.shoot(towardsVec.x(), towardsVec.y(), towardsVec.z(), 1.0F, recoil);
 
 					world.addFreshEntity(bulletEntity);
